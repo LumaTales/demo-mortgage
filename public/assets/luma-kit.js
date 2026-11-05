@@ -76,22 +76,24 @@
       var key = (data.get("access_key") || "").trim();
       var btn = form.querySelector("[type=submit]");
       var vi = root.lang === "vi";
+      // Hook for add-ons (e.g. Pro "lead → 1003" preview): fires with the submitted fields before reset.
+      function emit() { try { var o = {}; data.forEach(function (v, k) { o[k] = v; }); form.dispatchEvent(new CustomEvent("luma:lead", { detail: o, bubbles: true })); } catch (err) {} }
       // Lead Agent (optional): <form data-agent="APPS_SCRIPT_WEB_APP_URL"> logs + drafts a reply. Never sends.
       var agent = form.getAttribute("data-agent");
       if (agent && !DEMO) {
         fetch(agent, { method: "POST", mode: "no-cors", body: new URLSearchParams(data) }).catch(function () {});
-        if (!key || key === "DEMO") { show(true, form.getAttribute("data-ok") || "Thanks — we'll call you back within one business day."); track("lead_submit"); form.reset(); return; }
+        if (!key || key === "DEMO") { show(true, form.getAttribute("data-ok") || "Thanks — we'll call you back within one business day."); track("lead_submit"); emit(); form.reset(); return; }
       }
       if (DEMO || !key || key === "DEMO") {
         show(true, vi ? "Bản demo: form hoạt động, nhưng không gửi đi đâu cả. Trên site thật, tin nhắn tới email của bạn ngay lập tức."
                       : "Demo: the form works, but nothing was sent. On a live site this lead lands in the owner's inbox instantly.");
-        track("lead_submit", { demo: true }); form.reset(); return;
+        track("lead_submit", { demo: true }); emit(); form.reset(); return;
       }
       btn.disabled = true;
       fetch(form.action, { method: "POST", body: data, headers: { Accept: "application/json" } })
         .then(function (r) { return r.json(); })
         .then(function (j) {
-          if (j.success) { show(true, form.getAttribute("data-ok") || "Thanks — we'll call you back within one business day."); track("lead_submit"); form.reset(); }
+          if (j.success) { show(true, form.getAttribute("data-ok") || "Thanks — we'll call you back within one business day."); track("lead_submit"); emit(); form.reset(); }
           else throw new Error(j.message);
         })
         .catch(function () { show(false, form.getAttribute("data-err") || "Something went wrong. Please call us instead."); track("lead_error"); })
