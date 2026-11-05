@@ -19,12 +19,25 @@
 .tier-strip nav a[aria-current="page"] { opacity: 1; background: rgb(255 255 255 / .22); }
 .tier-strip nav a.all { opacity: 1; margin-right: .35rem; }
 @media (max-width: 560px) {
-  .tier-strip { font-size: .7rem; }
+  :root { --strip-h: 44px; }                       /* taller strip = finger-sized package links */
+  .tier-strip { font-size: .76rem; }
   .tier-strip .wrap { width: calc(100% - 1rem); gap: .4rem; }
   .tier-strip .viewing .lbl, .tier-strip .sep, .tier-strip nav a.all .long { display: none; }
   .tier-strip nav { gap: 0; }
-  .tier-strip nav a { padding: .35rem .3rem; }
+  .tier-strip nav a { padding: .8rem .36rem; }
   .tier-strip nav a.all { margin-right: .1rem; }
+  .lang-toggle button { min-height: 36px; padding-inline: .8rem; }
+}
+@media (max-width: 430px) {
+  .tier-strip nav a.all .txt { display: none; }    /* arrow only; the link keeps its aria-label */
+  .tier-strip nav a.all { padding-inline: .55rem; }
+}
+@media (max-width: 380px) {
+  .tier-strip { font-size: .7rem; }
+  .tier-strip nav a { padding-inline: .3rem; }
+}
+@media (max-width: 350px) {
+  .tier-strip .viewing .price { display: none; }   /* very small phones: package name stays, price drops */
 }
 body.has-strip .site-header { top: var(--strip-h); }
 

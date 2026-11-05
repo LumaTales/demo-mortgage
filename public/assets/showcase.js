@@ -40,8 +40,8 @@
     var base = root.getAttribute("data-root") || "../";       // demo pages live one folder deep
     var el = document.createElement("div");
     el.className = "tier-strip"; el.setAttribute("role", "navigation"); el.setAttribute("aria-label", "Showcase packages");
-    var html = '<div class="wrap"><span class="viewing"><span class="lbl">You’re viewing:</span> <b>' + cur.name + '</b> · ' + cur.price + '</span>' +
-      '<span class="sep" aria-hidden="true">—</span><nav><a class="all" href="' + base + '">← All<span class="long"> packages</span></a>';
+    var html = '<div class="wrap"><span class="viewing"><span class="lbl">You’re viewing:</span> <b>' + cur.name + '</b><span class="price"> · ' + cur.price + '</span></span>' +
+      '<span class="sep" aria-hidden="true">—</span><nav><a class="all" href="' + base + '" aria-label="All packages">←<span class="txt"> All</span><span class="long"> packages</span></a>';
     TIERS.forEach(function (t) {
       html += '<a href="' + base + t.id + '/"' + (t.id === tier ? ' aria-current="page"' : '') + '>' + t.name + '</a>';
     });
