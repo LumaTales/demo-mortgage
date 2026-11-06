@@ -77,6 +77,13 @@
       panel.classList.add("is-in");
       setTimeout(function () { panel.scrollIntoView({ behavior: "smooth", block: "start" }); }, 150);
     });
+    /* "See a sample lead" button: fires the same event with sample data (demo only) */
+    var btn = document.querySelector("[data-sample-lead]");
+    if (btn) btn.addEventListener("click", function () {
+      var vi = root.lang === "vi";
+      var sample = { name: vi ? "Nguyen Minh Anh" : "Jordan Lee", phone: "(714) 555-0142", email: "jordan.lee@example.com", goal: "buy", timeframe: vi ? "1–3 tháng" : "1–3 months", message: vi ? "Mua nhà đầu tiên ở Garden Grove" : "First home, Garden Grove, pre-approval first", sms_consent: "yes" };
+      document.dispatchEvent(new CustomEvent("luma:lead", { detail: sample, bubbles: true }));
+    });
   }
 
   /* ---------- 4. Complete: P&I calculator ------------------------------- */
