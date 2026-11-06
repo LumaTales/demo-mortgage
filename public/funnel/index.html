@@ -24,6 +24,16 @@
  {"@type":"Question","name":"I'm self-employed. Can I still qualify?","acceptedAnswer":{"@type":"Answer","text":"Often, yes. There are programs designed for business owners and non-traditional income."}}
 ]}
 </script>
+<style>
+.flow{list-style:none;margin:28px 0 18px;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.flow li{position:relative;background:var(--card,#fff);border:1px solid var(--line,#e2ddd2);border-radius:12px;padding:14px 12px 12px;min-width:0}
+.flow li b{display:block;font-size:.95rem;margin:6px 0 2px}
+.flow li>span:last-child{display:block;font-size:.82rem;opacity:.75;line-height:1.35}
+.flow-n{display:inline-flex;width:24px;height:24px;border-radius:999px;background:var(--accent,#1f3a5f);color:#fff;font-size:.8rem;font-weight:700;align-items:center;justify-content:center}
+.flow li+li::before{content:"→";position:absolute;left:-14px;top:18px;opacity:.5}
+@media (max-width:720px){.flow{grid-template-columns:1fr 1fr}.flow li+li::before{display:none}}
+@media (max-width:420px){.flow{grid-template-columns:1fr}}
+</style>
 </head>
 <body class="has-action-bar">
 
@@ -256,6 +266,14 @@
       <h2 data-i18n="ls_h2">Every lead arrives organized.</h2>
       <p class="lead" data-i18n="ls_lead">Each submit is tagged with where it came from and mapped into 1003 fields — so you call, you don't retype. Try the form above to see it.</p>
     </div>
+    <ol class="flow reveal" aria-label="Lead funnel">
+      <li><span class="flow-n">1</span><b data-i18n="fl1_h">Ad · QR · Google</b><span data-i18n="fl1_p">Every link carries its source tag</span></li>
+      <li><span class="flow-n">2</span><b data-i18n="fl2_h">Landing page</b><span data-i18n="fl2_p">One promise, one button, EN / VI / ES</span></li>
+      <li><span class="flow-n">3</span><b data-i18n="fl3_h">2-minute form</b><span data-i18n="fl3_p">No SSN, TCPA consent captured</span></li>
+      <li><span class="flow-n">4</span><b data-i18n="fl4_h">Pre-filled 1003</b><span data-i18n="fl4_p">MISMO 3.4 file, ready for your LOS</span></li>
+      <li><span class="flow-n">5</span><b data-i18n="fl5_h">You call</b><span data-i18n="fl5_p">Lead lands in email / text / CRM within seconds</span></li>
+    </ol>
+    <p class="center reveal"><button class="btn btn--primary" type="button" data-sample-lead data-i18n="fl_btn">See a sample lead →</button></p>
     <div class="sources reveal">
       <table>
         <thead><tr><th data-i18n="ls_th1">Lead source · last 30 days</th><th data-i18n="ls_th2">Leads</th></tr></thead>
@@ -355,6 +373,7 @@ window.LUMA_VI = {
   lp_s1: "Thông tin người vay", lp_s2: "Mục đích vay", lp_s3: "Liên hệ", lp_purpose: "Mục đích", lp_occ: "Loại cư trú",
   lp_lang: "Ngôn ngữ", lp_text: "Nhắn tin", lp_notes: "Ghi chú", lp_src: "Nguồn lead:", lp_status: "Trạng thái:", lp_status_v: "Mới · gọi trong 1 ngày làm việc",
   lp_note: "Bản xem trước mẫu — bản thật xuất file MISMO 3.4 cho LOS của bạn. Kiểm thử theo từng LOS trước khi chạy.",
+  fl1_h: "Quảng cáo · QR · Google", fl1_p: "Mỗi link mang theo nguồn của nó", fl2_h: "Trang đích", fl2_p: "Một lời hứa, một nút, EN / VI / ES", fl3_h: "Form 2 phút", fl3_p: "Không SSN, có đồng ý TCPA", fl4_h: "1003 điền sẵn", fl4_p: "File MISMO 3.4, sẵn cho LOS", fl5_h: "Bạn gọi", fl5_p: "Lead tới email / tin nhắn / CRM trong vài giây", fl_btn: "Xem lead mẫu →",
   ls_eyebrow: "Pro · phía sau hậu trường", ls_h2: "Lead nào tới cũng gọn gàng.",
   ls_lead: "Mỗi lần gửi form đều được gắn nguồn và đổ sẵn vào các mục của 1003 — bạn chỉ gọi, không phải gõ lại. Thử form ở trên để xem.",
   ls_th1: "Nguồn lead · 30 ngày qua", ls_th2: "Lead", ls_qr: "Thẻ QR", ls_foot: "Dữ liệu mẫu — trên site thật, số liệu thật tự hiện.",
