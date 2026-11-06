@@ -207,6 +207,7 @@ body.has-action-bar { padding-bottom: 76px; }
 .ehl { display: inline-flex; align-items: center; gap: .5rem; color: #fff; font-weight: 600; }
 .ehl svg { width: 28px; height: 28px; }
 .credit { margin-top: 1.25rem; font-size: .74rem; color: rgb(255 255 255 / .45); }
+.credit-logo { display: inline-block; margin-bottom: .5rem; opacity: .85; } .credit-logo img { height: 56px; width: auto; display: block; }
 
 /* ---------- 14. Reveal on scroll (progressive enhancement) ---------- */
 .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
